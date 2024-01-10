@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -602,6 +603,7 @@ public function cate(Request $request){
         $file= $request->file('scrolimg');
         $filename= date('YmdHi').$file->getClientOriginalName();
         $file-> move(public_path('storage/scrolimg'), $filename);
+        //$file->storeAs('public/scrolimg', $filename);
         $scrollzy['scrolimg']= $filename;
         $scrollzy ->update();
 
